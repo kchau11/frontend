@@ -1,0 +1,457 @@
+CSS-Cascading Style Sheets
+
+
+HTML: <h1 style="color:blue">Blue Color</h1>
+##Format (stored in <head> tag)
+
+selector {
+	property:value;
+}
+
+==>
+
+h1{
+	color:blue;
+}
+
+##if two external styles >> Presedence: the last one
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CSS welcome</title>
+	<style>
+		h1{
+			color:red; /*set color of h1*/
+		}
+		p{
+			color:blue;  /*set color of*/
+		}
+		p{
+			color:black; /*set color of*/ /*the last one external style*/
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Red</h1>
+		<p>Blue</p> <!--Blue become black color because the last one css of p is black-->
+		<p>Black</p> <!--Black color-->
+	</header>
+</body>
+
+##How to make color //OR we can highlight color on page then right click mouse > inpect > see color hex code.
+=>We use Hexadecimal #0000FF(blue),#FF0000(red),#FFFF00(yellow) //OR https://www.w3schools.com/colors/colors_picker.asp 
+//OR
+=>rgb(0.0.1) blue,rgb(1,0,0) red,rgb(1,1,0) yellow
+
+	h1{
+		color:#FF0000; /*set color of h1*/
+	}
+
+##check with contract color >> https://wave.webaim.org/
+
+##How to style text
+-font(family,style,variant, size)
+/font-family:
+
+	h1{
+		font-family: Arial;
+	}
+
+	/if browser is not support Arial, we have to put alternaters. if not, it will go back browser default font
+
+		h1{
+			font-family: Courier, Impact, Arial;
+		}
+
+/font-style: normal, italic, or oblique......
+
+	h1{
+		font-style: normal;
+	}
+
+/font-variant: normal, small-caps......
+
+	h1{
+		font-variant: normal;
+	}
+
+/font-size: xx-small ==> xx-large, pixel(recommend): 10px, 20px...
+	
+	h1{
+		font-size: 80px;
+	}
+/font-weight: light, normal, bold
+	
+	h1{
+		font-weight: bold;
+	}
+
+/font-decoration: underline
+
+	h1{
+		font-decoration: underline;
+	}
+
+
+/font-decoration
+
+-color(foreground cl) and background(background cl)
+
+	h1, span{
+		color: #0000FF;
+		background-color: #B3B3B3;
+	}
+
+-alignment
+text-align: left, right, center, justify(left side và 2 bên đều hết)
+
+	h1{
+		text-align: center;
+	}
+
+-line-height: space between 2 lines
+line-height: 50% or 200%.....	
+	
+	h1{
+		line-height: 50%;
+	}
+											DISPLAY VALUES
+##How to set DISPLAY
+-display:inline/block/inlikne-block
+
+#Inline: not break line, cannot set width and height(just enough), but can set margin and padding of left and right
+
+#Block : break line, can set width, height, margin, padding(T,B,L,R)
+
+#Inline-Block: not break line, can set width, height, margin, padding(T,B,L,R)
+
+##How to set Float and Clear (set element on left or right)
+FLOAT: set element left or right, not overlap
+-float:left/right
+CLEAR: set element away from float
+clear:left/right/both
+
+##How to set Overflow (when display content is over the size of box)
+
+-overflow:visible/hidder/scroll/auto
+
+visible: still show if over the box
+hidden: not show the over part
+scroll: make scroll for display
+auto: auto set the overflow part
+
+##How to display as table
+
+display:table (in <body> tag)
+display:table-cell (in where yu want to put)
+
+##How to choose what to visible or hidden
+
+visibility:visible/hidden
+
+visible: show out
+hidden: hide out
+
+
+																		##HOW TO CHOOSE WHAT STYLE FOR WHAT YOU WANT TO APPLY
+																					Just set "class" ex class="a"
+<style>
+h2.a {
+  color:red;
+}
+//h2.a = a is class="a" as we set for special elemtn
+</style>
+
+<h2 class="a">Red color</h2>
+//class = a is a special class for that tag only
+
+																							##BOX model
+
+##How to add border for block, inline, inline-block....
+div{
+	border:style width color;
+}
+
+>style: none, dotted, dashed, solid, double, griive, ridge, inset, outset, hidden
+>width: thin, medium, large
+	border-width: 3px; (3px for border-width)
+	border-width: 3px 10px; (3px for top and bot and 10px for L and R)
+	border-width: 3px 10px 20px; (3px for top and 10px for L and R and 20px for bot)
+	border-width: 3px 10px 20px 1px; (T,R,B,L)
+>color: color, hex, , rbg, transparent
+
+##How to add margin : additional space for (outside your border)
+	Positive: right/down
+	Negative: left/up
+
+	margin:5px;
+
+		//(ELEMENT)To horizontally center an element use 
+		==> margin:0 auto;
+		for block, not for float, element must not have fixed or absolute postion, width is not auto***********************************************
+
+##How to add padding: : additional space btw the element and it border(inside your border)
+	Positive: borders move outward from element
+
+	padding:10px;
+
+##margin + border + padding + width = actual width
+
+div{
+	width: 100px;
+	height: 50px;
+	padding: 10px;
+	margin: 5px;
+	border: 1px solid black;
+}
+====> actual width is (5x2)+(1x2)+(10x2)+100= 132px
+====> actual height is (5x2)+(1x2)+(10x2)+50= 82px
+
+##How to add box-sizing
+-content-box : content only (default)
+-border-box : content + padding + margin
+
+	Mozilla Firefox: -moz-box-sizing
+	Microsoft Internet Explorer: -ms-box-sizing
+	Webkit (Google Chrome and Apple Safari): -webkit-box-sizing
+
+##How to add Absolute value - px,mm,cm,....
+##Fluid : sets size relative to surrounding elemtns - %,vw,vh,
+		-em(font) if em is current size, .75 is 75% of the current size
+		-rem(font) if rem s current size of root element
+
+++ EX ++
+div{
+	color: white;
+	background-color: blue;
+	box-sizing:border-box;
+	display: inline-block;
+	width:49%;
+	height: 200px;
+	margin: 2px;
+	padding:15px;
+	border: 5px solid transparent;
+	margin:0 auto;
+	margin-top: 10px;
+}
+
+//OR
+
+section{
+	background:#ccffff;
+	width:30%;
+	margin-right: 2%;
+	display:inline-block; /*put them in inline-block*/
+	float: left; /*follow left side*/
+}
+
+footer{
+	background-color:#0099cc;
+	clear: both; /*clear L and R for preventing float*/
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////Link and List
+##How to set underline for link
+
+-text-decoration:overline/line-through/underline/underline overline
+
+##How to set more decoration (before/after click, or over it or select)
+
+-a:link{} : before click
+-a:visited{} : after clicked
+-a:hover{} :over link
+-a:active :selected it(during selected it only)
+-a:focus : active with keyboard(tab)
+-a:
+
+==>
+Link
+	a:link{color:#33cc33;}
+	a:visited{color:#33cc33;}
+	a:hover{color:#ff0000;}
+	a:active{color:#ffff00;}
+	a:focus{color:#ffff00;}
+
+##How to style Lists
+//To change from list icon 1,2,3(ol) or .(ul) to new icon as set
+-list-style-type:square,lower-roman, upper-roman, decimal-leading-zero,upper-alpha,lower-alpha,hebrew,armenian
+
+ol{list-style-type:upper-roman;}
+
+//To use image for icon of list
+-list-style-image: url("link to icon")
+
+ol{
+	list-style-image: url("../gallery/logo.png");
+}
+
+
+//To put logo of list inside or outside list
+-list-style-position:inside/outside
+
+list-style-position: inside
+
+=====>COMBINATION OF TWO ELEMENTS ABOVE: list-style: square inside url("URL OF LOGO")
+ol{
+	list-style:square inside url("../gallery/logo1s.png");
+}
+=======================================================================================\\
+
+						////ADVANCED SELECTORS
+1. nav a
+2. nav>a
+3. ul,ol
+
+4.ID: <div id="header"> 				// #header{color:blue;} (# for ID and unique)
+
+5.CLASS: <header><div class="header1"> 	// .header1{color:red}	(. for class)
+										// 	div.header1{color:red}
+										// 	header div.header1{color:red}
+
+6.* every elements on the page
+7.!important : incase we have multiple rules for the same selector.
+
+8.Attribute Selectors:
+img[src="gallery/chicken1.jpg"]{
+	border:5px solid #555;
+}
+	///with Operator ^: begin with
+img[src^="gallery"]{
+	border:5px dotted #555;
+}
+	/// $:end with 
+
+img[src$=".jpg"]{
+	border:2px solid #555;
+}
+
+	/// *:wildcard 
+img[src*="gallery"]{
+	border:5px solid #555;
+}
+
+
+>>>>background: #00ff00 url("imgs/ocean.jpg") no-repeat fixed center;<<<<
+
+###BROWSER CAPABILITY
+
+Prefix 	-webkit- Android,Chrome,IOS,Safari
+		-moz- Firefox
+		-ms- IE
+		-o- Opera
+Often Unsuported Properties:column-count,column-gap,border-radius,gradient
+Go to http://caniuse.com/ for when use Prefixes
+	-column-count: how many columns
+-webkit-column-count:3px
+-moz-column-count:3px
+-ms-column-count:3px
+-o-column-count:3px
+
+	-column-gap: space between elements
+-webkit-column-gap:15px
+-moz-column-gap:15px
+-ms-column-gap:15px
+-o-column-gap:15px
+
+	-border-radius: design the 4 corners(4 góc bo tròn)
+-webkit-border-radius:25px
+-moz-border-radius:25px
+-ms-border-radius:25px
+-o-border-radius:25px
+
+	-gradient:đường dóc của màu
+	background: #666666;
+	background:-webkit-linear-gradient(top, #666666 0%,#00b7ea 100%);
+	background:-moz-linear-gradient(#666666 0%,#00b7ea 100%);
+	background:-o-linear-gradient(#666666 0%,#00b7ea 100%);
+	background:-linear-gradient(#666666 0%,#00b7ea 100%);	
+
+##How to add picture to background
+-background-image: url("../gallery/ocean1.jpg");
+
+
+##How to add functions for form
+Forms:
+	:enabled (pick what can input)
+		input:enabled{background: blue;}
+		<input type="text" value="hoc web chuẩn" /><br />
+
+	:disabled (pick what cannot input )
+		input:disabled{background: #ccc;}
+		<input type="text" value="hoc web chuẩn" disabled="disabled" />
+		
+	:checked (pick what we can check for checkbox)
+		input:checked{background: blue;}
+		<input type="checkbox" value="" checked="checked" /><br />
+		<input type="checkbox" value="" /><br />
+
+
+##TRANSITIONS : need to set in first then use :hover or :active to make transition
+
+-:hover{} or :active{}
+
+
+div:hover {
+  width: 300px; // transition for width from 100px >> 300px
+  height: 300px; // transition for height from 100px >> 300px
+}
+div:active {
+	width:200px; // transition from 100px >> 200 when click
+	height:200px;
+}
+
+
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: width 2s, height 4s; //transition finishes width in 2 seconds and height in 4 seconds
+  //or
+  transition-property: width, height; //choose width and height
+  transition-duration: 2s, 4s; //width in 2 seconds, and height is 4 seconds
+  transition-timing-function: linear; //linear >> longer
+	transition-delay: 0.5s; //the length of time before transition}
+}
+
+##TRANSFORMS : need to set in first then use :hover or :active to make transform
+
+-transform:translate(x,y); // x for left/right, y for up/down to wanted location
+	transform:translate(100,75); 
+
+-transform:scale(width,height); //change width and height as set
+	transform:scale(2,3) // width 2 times and height 3 times
+
+-transform:skew(x-angle, y-angle); //rotate as x and y-angle
+	transform:skew(30deg, 15deg); // x-angle is 30deg and y-angle is 15deg
+
+-transform:rotate(??deg); //rotate by how how many degrees we want
+	transform:rotate(30deg); // rotate to 30 degrees
+++ transform:rotateX(deg)
+++ transform:rotateY(deg)
+++ transform:rotateZ(deg)
+++ transform:rotate3d(x,y,z)
+
+####POSITION
+
+-position:static/relative/absolute/fixed;
+
+position:static; follow default
+
+position:relative; we can change position as set but not affect others element
+	top/right/bot/left:??;
+
+position:absolute; we can change postion as set and can affect other elements
+	top/right/bot/left:??;
+
+position:fixed; we can change postion as set and can affect other elements and when we scroll, it still stay there
+	top/right/bot/left:??;
+
+z-index:-1; //behind other element
+z-index:0; //infront of other element
+	top/right/bot/left:??;
+
+
+
