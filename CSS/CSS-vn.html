@@ -1,0 +1,220 @@
+1. CSS là gì and why?
+Khai báo loại 1: trực tiếp chèn vô html (nội tuyến)
+	<style>
+		h1{
+			font-size: 30px;
+			color: orange;
+			font-weight: bolder;}
+	</style>
+khai báo loại 2: sài <style></style> chèn vô tag(trực tiếp)
+	<h1 style="font-size:30px; color:orange; font-weight: bolder;">Nội dung</h1>
+
+khai báo loại 3: sài file ở bên ngoài sau đó khai báo link trong phần head: >> tạo thên 1 file .css(ngoại tuyến)
+	<link rel="stylesheet" type="text/css" href="../CSS/style.css">
+												hred="đường dẫn file css"
+Độ ưu tiên of CSS: khai báo sau cùng(ko quan trọng nội tuyến hay ngoại tuyến)
+hoặc 
+dùng >> !important >> để tạo độ ưu tiên cao nhất: nếu 2 !important thì ưu tiên cái cuối cùng
+	h1{
+		color: red !important;
+	}
+hoặc theo selector
+dùng ID(#id_name) > class(.class_name) > tag(thẻ-h1,h2)
+
+Selector là gì? tag để custom by CSS
+	-h1{} h2{} or h1,h2,p{}
+
+	-ID: #id_name (chỉ 1 ID không lập lại)
+		<p id="blue"></p>
+		CSS: blue{font-color:blue;}
+
+	-class #class_name (sử dụng cho nhóm - có thể lập lại)
+		<p class="red"></p>
+		<h1 class="red"></h1>
+		CSS: .red{font-color:red;}
+
+VD: 
+	HTML:
+	<p id="p1">Hoc Lap Trình Web</p> >> Red
+	<h1 class="blue">Lap Trinh Web</h1> >>Blue
+	<h2 class="blue">Thiet Ke Web</h2> >>Blue
+	<h3 class="blue" id="h3">Khai Giang</h2> >>Silver vì có ID
+
+	CSS:
+	#p1{color: red;}
+	#h3{color: silver;}
+	.blue{color:blue;}
+
+Hoặc dùng Attribute
+HTML:	<input type="text" name="ten" value="Thinh"> >>red tại vì định nghĩa trong CSS
+		<input type="text" name="ho" value="Nguyen"> >>black
+
+CSS: input[name="ten"]{color: red;}
+		or input::value{color:red;}
+
+Hoặc theo first and last element: tag:first-child or tag:last-child{}
+VD:
+	p:first-child{color: red;}
+	p:last-child{color:blue;}
+
+Hoặc gọi theo thứ tự: tag:nth-child(1/2/3/4/5/...)
+VD:
+	p:nth-child(3){color:green;}
+
+
+
+Cú pháp chung khí định nghĩa CSS
+	selector{
+		CSS_Attribute_Name:value;
+			}
+
+1. nav a
+2. nav>a
+
+Các thuộc tính cơ bản trong CSS
+-background: color | image | repeat | position | attachment
+	color: red/blue...										backgroud-color
+	image: url(đường dẫn file image)					background-image
+	repeat: no-repeat/repeat-x/repeat-y					background-repeat
+	position: ?px/left/right/center/top/right			background-position
+	attachment: scroll/no-scroll/fixed					background-attachment																				background-size: cover(full)/contain(same as picture)/reset/auto
+
+VD: background: silver url(../CSS/sunflower.jpg) repeat-y center;
+
+-border: width | type | color
+	width: ?px											border-width
+	type: solid/dotted/none/dashed						border-style
+	color: red/blue...									border-color
+border-top: width | type | color
+border-bottom: width | type | color
+border-left: width | type | color
+border-right: width | type | color
+border-radius: ??px
+
+Các thuộc tính CSS cho text(văn bản)
+-color:
+-text-align: left / right / center
+-text-indent: ??px / ?em / ?rem
+-text-transform: lowercase / uppercase
+-text-decoration: underline
+-font-size:  ??px / ?em / ?rem / % /
+-font-family: Courier/ Impact/ Arial
+-font-weight: bold / number / normal / light
+-font-style: italic / normal
+-font-variant: small-caps / normal
+-line-height: ??px / ?em / ?rem / %(height giữa các dòng)
+-letter-spacing: ??px / ?em / ?rem / %(space giữa các chữ)
+
+Thuộc tính khác:
+width: ??px / % / rhv
+height: ??px / % / rhv
+min | max-width: ??px / % / rhv (độ rộng tối đa)
+min | max-height: ??px / % / rhv (độ cao tối đa)
+
+margin: top right bottom left : ??px / % / rhv (tạo khoản cách từ viền tới thẻ html khác)
+	margin-top/left/bottom/right
+
+padding: top right bottom left : ??px / % / rhv (tạo khoản cách từ nội dụng tới viền)
+	margin-top/left/bottom/right
+
+**: khi sủ dụng margin or padding >> kích thước sẽ tăng lên
+
+///FLOAT AND CLEAR
+-float: cho phép các thẻ khác tràn lên không quan tâm block
+	float:left/right
+==khi sử dụng float phải sử dụng width cố định(responsive vất vả)
+
+-clear: cho phép ngừng lại việc tràn lên từ float
+	clear:left/right/both
+
+VD: 
+HTML:
+<h3 class="left">Block 1</h3>
+<h3 class="left">Block 2</h3>
+<h3 class="left" id="id_left">Block 3</h3>
+<h3 class="left">Block 4</h3>
+CSS:
+.left{display: block;
+	border: 2px solid blue;
+	float:left;}
+#id_left{clear:left;}
+
+>>Chúng ta tạo được 2 dòng:  block1+2 và block3+4  thay vì 1 dòng block 1 2 3 4 vi sử dụng clear:left
+
+///POSITION AND Z-INDEX
+
+-position:định vị vị trí của thẻ
+	position: relative(default) / static / absolute(thẻ biến thành inline - rút vừa đủ - giống fixed >> set vị trí ) / fixed(set vị trí và không thay đổi)
+>>đi kèm với position:
+	left: ?px
+	right: ?px
+	top: ?px
+	bot: ?px
+
+VD
+HTML:
+
+<div>
+	<p>Thử nghiệm WEB</p>
+</div>
+
+CSS:
+div p{
+	border: 3px solid blue;
+	position: fixed;
+	left:10px;
+	top:70px;
+}
+
+>> Chúng ta tạo thêm Thử nghiệm WEB với vị trí set
+
+-z-index: Chỉ sử dụng được khi có position > dùng để lựa ra cái nào nằm trên thằng khác (sử dụng với absolute và fixed)
+	z-index:number (số càng lớn thì nằm trên)
+
+
+HOVER/LINK/VISITED/ACTIVE/FOCUS
+-a:link{} : before click
+-a:visited{} : after clicked
+-a:hover{} :over link
+-a:active :selected it(during selected it only)
+-a:focus : active with keyboard(tab)
+-a:
+
+==>
+Link
+	a:link{color:#33cc33;}
+	a:visited{color:#33cc33;}
+	a:hover{color:#ff0000;}
+	a:active{color:#ffff00;}
+	a:focus{color:#ffff00;}
+VD:
+p:hover{
+	background-color: black;
+	width: 120px;
+	height: 120px;
+	z-index: 4;
+}
+// khi hover vô thì width và height tăng lên 120px và màu đổi sang đen, và nằm trên vì z-index
+
+
+OPACITY / VISIBILITY / DISPLAY
+
+opacity: 0.1 > 0.9 or 1
+	0.1 > 0.9 : độ mờ
+	1: 100% ko mờ
+	VD:	opacity: 0.5;
+
+visibility: visible/hidden
+	VD: visibility: hidden;
+
+display: block / inline / inline-block / none
+
+
+BEFORE AND AFTER IN CSS : dùng để thêm nội dung thay vì sửa text:
+
+HTML:
+<span>thịt nguội</span>
+CSS:
+span::before{content: 'Bánh mì ';}
+span::after{content: ' giá rẻ'}
+//chúng ta thêm bánh mì và giá rẻ vào đằng trc/sau của bánh mì 
