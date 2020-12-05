@@ -1,0 +1,122 @@
+/*set nguyên trang margin 0 và padding 0*/
+*{
+	margin: 0;
+	padding: 0;
+}
+
+/* tạo var cho nav*/
+:root{
+	--bg-color:#57a92b;
+	--text-color: white;
+	--footer-bg:black;
+}
+/* set font chung và chỉnh max width và margin 0 auto*/
+body{
+	font-family: tahoma;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+/* chọn display flex để nó chay hết sang bên trái và chọn align-items:center*/
+header{
+	display: flex;
+	align-items: center;
+}
+
+/*set margin right 50x để tạo khoản cách và chọn text-algin center và width 20% để logo ở giữa*/
+.logo{
+	margin-right: 50px;
+	text-align: center;
+	justify-content: center;
+	width: 20%;
+}
+
+.logo img{
+	max-width: 150px;
+	height: 50px;
+
+}
+/*toàn bộ chữ đều viết hoa by text-transform: uppercase*/
+.slogan h3{
+	text-transform: uppercase;
+	font-size: 24px;
+	color: orange;
+}
+
+/*MENU*/
+/*vận dụng var đã tạo ở trên*/
+nav{
+	background: var(--bg-color);
+
+}
+
+/* list-style-type: none; dùng để loại bỏ icon đằng trước ul > li
+	display: flex; ==> canh trái mặc định
+	height: 45px;
+	align-items: center; ==> canh giữa
+	justify-content: space-around; ==> dùng để tạo khoản cách ở giữa*/
+nav ul{ 
+	list-style-type: none;
+	display: flex;
+	height: 45px;
+	align-items: center;
+	justify-content: space-around;
+}
+/*text-decoration: none dùng để loại bọ gạch dưới cũa link a*/
+nav ul li a{
+	text-decoration: none;
+	color:var(--text-color);	
+}
+
+/*main : cũng set display flex sang trái*/
+main{
+	display: flex;
+}
+/* class left width là 80% để chia màn hình*/
+main section.left{
+	width: 80%;
+}
+
+main section.left ul{
+	list-style-type: none; /*bỏ dầu chấm đầu dòng*/
+}
+
+main section.left ul img{
+	float: left; /*để hình float sang trái*/
+	width: 300px;
+	margin-right: 10px; /*tạo khoản cách với bên phải*/
+
+}
+
+main section.left ul li{
+	clear: left; /*để các nội dụng sau không đi theo cái float left đằng trước*/
+	margin-top: 15px;
+	float: left;
+	line-height: 40px; /*độ cao của dòng chữ*/
+}
+
+main section.left ul li p{
+	margin-top: 10px;
+
+}
+
+
+main section.right{
+	width: 20%;
+}
+
+main section.right img{
+	width: 200px;
+}
+/*footer width là 100%, clear left để không bị ảnh hưởng nên nằm trong body and line-height: tạo đổ cao của dòng*/
+footer{
+	clear: left;
+	width: 100%;
+	background: var(--footer-bg);
+	color: var(--text-color);
+	text-align: center;
+	line-height: 45px;
+	height: 45px;
+}
+
+

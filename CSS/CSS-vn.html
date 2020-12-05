@@ -217,4 +217,318 @@ HTML:
 CSS:
 span::before{content: 'Bánh mì ';}
 span::after{content: ' giá rẻ'}
-//chúng ta thêm bánh mì và giá rẻ vào đằng trc/sau của bánh mì 
+//chúng ta thêm bánh mì và giá rẻ vào đằng trc/sau của bánh mì
+
+==::first-line : thay đổi thuộc tính dòng đầu tiên
+
+
+>>>>>>>>>FLOAT VS FLEX<<<<<<<<<<<<<<
+ FLEX: Dùng để tạo layout cố định, thường được sử dụng trên thẻ cha, nên thẻ con sẽ làm theo đã định từ thẻ cha, một khi set thẻ cha display:flex và width, thẻ con không vượt qua width của thẻ cha và được set theo hàng ngang(main-axis) / hoặc hàng dọc(cross-axis)
+VD:
+<div class="container-flex">
+	<div>Block1</div>
+	<div>Block2</div>
+	<div>Block3</div>
+</div>
+..Cha
+.container-flex{
+	background-color: blue;
+	width: 600px;
+	height: 500px;
+	display: flex;
+}
+..Con
+.container-flex>div{
+	background: red;
+	color: white;
+	width: 200px;
+	height: 80px;
+	border: 3px solid purple;
+}
+
+Chúng ta có thể thêm: flex-direction: ====>> để set hướng của thẻ con.
+row(default-dòng từ trái qua phải)  
+column(cột từ trên xuống dưới) 
+row-reverse(đảo ngược dòng từ phải sang trái)  
+column-reverse(đảo ngược cột - từ dưới lên trên) 
+
+..Cha
+.container-flex{
+	background-color: blue;
+	width: 600px;
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+}
+
+Thuộc tính của FLEX 
+flex: flex-grow / flex-shrink / flex-basic
+flex: 	0 			1 			auto 		(defaulf)
+
+..Con
+flex-grow(default:0) / 1,2,3,4./ %./ float. số càng lớn chiếm càng nhiều (1 chiếm trọn nếu đứng 1 mình,  trong khi 2 gấp 2 lần , 3 gấp 3 lần nếu không chiếm 1 mình) ==>tỉ lệ giản ra
+<div class="container-flex">
+	<div style="flex-grow:1">Block1</div>
+	<div style="flex-grow:2">Block2</div>
+	<div style="flex-grow:3">Block3</div>
+</div>
+
+flex-shrink(default:1):2,3,4./ %./ float. số càng lớn giảm càng nhiều (trong khi 2 giảm 2 lần , 3 giảm 3 lần nếu không chiếm 1 mình) ==>tỉ lệ co lại
+
+<div class="container-flex">
+	<div style="flex-shrink:2">Block1</div>
+	<div style="flex-shrink:2">Block2</div>
+	<div style="flex-shrink:3">Block3</div>
+</div>
+
+flex-basic(default:auto): giống width ==> px / % / float
+
+<div class="container-flex">
+	<div style="flex-basis:100px">Block1</div>
+	<div style="flex-shrink:200px">Block2</div>
+	<div style="flex-shrink:300px">Block3</div>
+</div>
+===========================
+flex-warp(dùng để cuốn lại cái box với nhau khi resize màn hình) chỉ dùng dc khi không gian chứa hẹp
+
+.container-flex{
+	background-color: blue;
+	width: 350px;
+	height: 350px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+(WIDTH)CANH CHÍNH (GIỮA / TRÁI / PHẢI) CHO FLEX: ==> justify-content: flex-start / center / flex-end / space-around(chia đều) / space-between
+
+.container-flex{
+	background-color: blue;
+	width: 600px;
+	height: 500px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.container-flex>div{
+	background: red;
+	color: white;
+	width: 100px;
+	height: 80px;
+	border: 3px solid purple;
+}
+
+(HEIGHT)CANH TRÊN / GIỮA / DƯỚI CHO FLEX: ==> align-items: flex-start / center / flex-end
+
+.container-flex{
+	background-color: blue;
+	width: 600px;
+	height: 500px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+.container-flex>div{
+	background: red;
+	color: white;
+	width: 100px;
+	height: 80px;
+	border: 3px solid purple;
+}
+
+CÁCH KHÁC: giống align-items nhưng có thêm space-around và space-between
+(HEIGHT)CANH TRÊN / GIỮA / DƯỚI CHO FLEX: ==> align-content: flex-start / center / flex-end / space-around(chia đều) / space-between
+.container-flex{
+	background-color: blue;
+	width: 600px;
+	height: 500px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+}
+.container-flex>div{
+	background: red;
+	color: white;
+	width: 100px;
+	height: 80px;
+	border: 3px solid purple;
+}
+
+Chúng ta có thẻ set order trong FLEX: order: -3 -2 -1 0 1 2 3
+
+.first{
+	order: 1;
+}
+.second{
+	order: 2;
+}
+.third{
+	order: 3;
+}
+.four{
+	order:-1;
+}
+.five{
+	order: 4;
+}
+
+												--- Biến trong CSS---- CSS variable
+SCSS(SASS or LESS
+)
+-dùng để giảm lượng code cần lập lại / khi chúng ta cần thay đổi gì trong tương lai, chỉ cần thay đổi 1 lần
+--> chúng ta sử dụng root
+
+:root{
+	--tên biến: value of biến;
+}
+h1{
+	loại biến:var(--tên biến);
+}
+
+VD:
+
+:root{
+	--red-color: red;
+}
+h1,h2,h3,h4,h5{
+	color:var(--red-color);
+}
+
+
+-->> hoặc chúng ta có thẻ tạo biến riêng và chỉ dùng được trong cái class có cái items đó
+--Chỉ những thẻ a nằm trong class .first,.second,.third,.four,.five thay đổi font color và bgcolor.
+
+.first,.second,.third,.four,.five{
+	border:1px solid var(--pink-color);
+	margin-bottom: 5px;
+	--item-text-color: pink;
+	--item-bg-color: purple;
+}
+a{
+	color:var(--item-text-color);
+	background-color:var(--item-bg-color);
+}
+
+--> hoặc ghi đè màu mới vô
+
+:root{
+	--pink-color: red;
+}
+
+h1,h2,h3,h4,h5{
+	color:var(--pink-color);
+	text-align: center;
+}
+
+h1:hover{
+	--pink-color:blue;
+}
+
+----------------------------VD Tổng:
+
+HTML:
+<div class="container">
+
+	<div class="first">
+		<h1>H1</h1>
+			<a href="">Read more</a>
+	</div>
+
+	<div class="second">
+		<h2>H2</h2>
+			<a href="">Read more</a>
+	</div>
+
+	<div class="third">
+		<h3>H3</h3>
+			<a href="">Read more</a>
+	</div>
+
+	<div class="four">
+		<h4>H4</h4>
+			<a href="">Read more</a>
+	</div>
+
+	<div class="five">
+		<h5>H5</h5>
+			<a href="">Read more</a>
+	</div>
+
+
+</div>
+
+	<a href="">Ben Ngoai</a>
+
+	<a href="">Ben Ngoai</a>
+
+	<a href="">Ben Ngoai</a>
+	
+	<a href="">Ben Ngoai</a>
+
+CSS:
+.container{
+	display: flex;
+	width: 600px;
+	flex-wrap: wrap;
+	border: 2px solid;
+
+}
+:root{
+	--pink-color: red;
+}
+h1,h2,h3,h4,h5{
+	color:var(--pink-color);
+	text-align: center;
+}
+.first,.second,.third,.four,.five{
+	border:1px solid var(--pink-color);
+	margin-bottom: 5px;
+	--item-text-color: pink;
+	--item-bg-color: purple;
+	margin: 10px;
+	padding: 10px;
+	flex-basis: 150px;
+}
+a{
+	color:var(--item-text-color);
+	background-color:var(--item-bg-color);
+}
+
++=======HƯỚNG DẨN RESPONSIVE=============
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" media="screen and (max-width:480px)" href="../CSS/mobile.css">
+</head>
+
+Queries media
+- cú pháp: 
+	@media 
+		+ not
+		+ only
+		+ and
+		+ screen
+	Ex: @media screen and (max-width: 960px){
+		CSS
+}
+	(chỉ thay đổi khi màn hình từ 480px to 960px)
+	Ex: @media screen and (max-width:960px) and (min-width:480px){
+		CSS
+}
+
+VD:
+.container{
+	display: flex;
+	width: 600px;
+	border: 2px solid;
+
+}
+
+@media screen and (max-width: 480px)
+{
+.container{
+	flex-direction: column;
+}
+}
+
+

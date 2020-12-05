@@ -1,0 +1,103 @@
+header{
+	display: flex;
+	flex-direction: column;
+}
+
+.top-banner{
+	height: 100px;
+	font-size: 22px;
+}
+
+.main-banner{
+	flex-direction: column-reverse;
+}
+
+.left-side{
+	text-align: center;
+	line-height: 1.5;
+}
+
+.left-side>h1{
+	font-size: 33px;
+}
+
+.left-side h1 span{
+	font-size: 45px;
+}
+
+.left-side .des-title{
+	font-size: 20px;
+}
+
+.left-side .buy-book{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+
+.left-side .bot-title{
+	font-size: 25px;
+}
+
+.right-side img{
+	width: 220px;
+}
+
+.content-1{
+	margin: 40px 20px 40px 20px;
+	font-size: 22px;
+}
+
+.content-2{
+	margin: 25px 20px 40px 20px;
+	font-size: 22px;
+}
+
+.content-3{
+	margin:20px;
+}
+
+.content-4>h3{
+	text-align: center;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.row-li{
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-left: 120px;
+	padding-right: 120px;
+}
+.content-5{
+	height: 2100px;
+}
+.content-5 .container2{
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+
+
+.final{
+	font-size: 20px;
+}
+.author{
+	flex-direction: column;
+	max-width: 450px;
+	margin-left: 20px;
+	margin-right: 20px; 
+}
+
+.author-info{
+	width: 400px;
+	padding-bottom: 20px;
+}
+
+.infoweb{
+	display: flex;
+	flex-direction: column;
+}
