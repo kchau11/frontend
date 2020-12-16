@@ -1,0 +1,21 @@
+Cài đặt Photoshop CSS6 > mở lên
+H > Move
+Z > Zoom-in / + Alt:  Zoom-out
+V > lựa chọn vùng muốn tìm hiểu > Auto-select - Group
+Ctrl + Z : go back 1 time only / Ctrl + Alt + Z : go back many times
+
+Muốn cut 1 ảnh từ photoshop > 
+chọn vùng muốn cắt sau đó chuột phải vào con mắt "Show/hide all others layer > 
+Thanh bar chon Image > Trim > OK
+
+Muốn cut nhiều ảnh từ photoshop>
+nhấn V > auto-select > Layer > nhấn Shift và chon ảnh cần cắt > 
+chọn con mắt ùi "Show/hide all others layer >
+Image > Trim > OK
+
+Muốn Cút nhanh hơn> Slice Tool or C > Right click > 
+SLice Tool > Choose what we want to cut > File > Save fo Web > Wait > Save
+
+Muốn lấy màu thì chọn icon màu bên trái > ùi click
+
+Copy văn bản > Horizontal Type Tool T >  OR + Alt > ùi chọn 
